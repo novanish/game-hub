@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { apiClient } from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Game {
+export interface Game {
   id: string;
   name: string;
+  background_image: string;
 }
 interface FetchGameResponse {
   count: number;
@@ -24,6 +25,7 @@ export function useGames() {
       .get<FetchGameResponse>("/games", { signal: controller.signal })
       .then((response) => {
         setGames(response.data.results);
+        console.log(response.data.results);
         setIsLoading(false);
       })
       .catch((error) => {

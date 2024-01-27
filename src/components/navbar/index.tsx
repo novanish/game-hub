@@ -1,7 +1,15 @@
-import { HStack, Image, Input, Switch } from "@chakra-ui/react";
+import {
+  HStack,
+  Image,
+  Input,
+  Switch,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import logo from "../../assets/logo.webp";
 
 export function Navbar() {
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
     <nav>
       <HStack gap={7} p={4}>
@@ -14,7 +22,15 @@ export function Navbar() {
           enterKeyHint="search"
           spellCheck={false}
         />
-        <Switch id="email-alerts" size="lg" />
+        <HStack>
+          <Switch
+            id="email-alerts"
+            size="lg"
+            onChange={toggleColorMode}
+            isChecked={colorMode === "dark"}
+          />
+          <Text>{colorMode === "dark" ? "Dark" : "Light"} Mode</Text>
+        </HStack>
       </HStack>
     </nav>
   );
