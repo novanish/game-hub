@@ -9,7 +9,7 @@ export function GameGrid() {
   const skeletonCardCount = 6;
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} padding="2rem">
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10}>
       {isLoading
         ? Array.from({ length: skeletonCardCount }, (_, i) => (
             <GameCardContainer key={i}>

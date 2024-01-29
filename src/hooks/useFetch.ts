@@ -13,6 +13,7 @@ export function useFetch<T>(endpoint: string) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const controller = new AbortController();
 
     apiClient
@@ -21,8 +22,8 @@ export function useFetch<T>(endpoint: string) {
       })
       .then((response) => {
         setData(response.data.results);
-        // setTimeout(() => setIsLoading(false), 2000);
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 2000);
+        // setIsLoading(false);
       })
       .catch((error) => {
         if (error instanceof CanceledError) return;

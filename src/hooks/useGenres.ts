@@ -3,6 +3,7 @@ import { useFetch } from "./useFetch";
 interface Genre {
   id: number;
   name: string;
+  image_background: string;
 }
 
 export function useGenres() {
