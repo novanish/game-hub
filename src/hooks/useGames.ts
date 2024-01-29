@@ -44,7 +44,8 @@ export function useGames() {
       .then((response) => {
         setGames(response.data.results);
         console.log(response.data.results);
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 2000);
+        // setIsLoading(false);
       })
       .catch((error) => {
         if (error instanceof CanceledError) return;

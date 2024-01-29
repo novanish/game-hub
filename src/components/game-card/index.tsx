@@ -8,7 +8,7 @@ interface Props {
   game: Game;
 }
 
-export default function GameCard({
+export function GameCard({
   game: { background_image, name, parent_platforms, metacritic },
 }: Props) {
   return (
