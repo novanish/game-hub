@@ -3,7 +3,6 @@ import { type Game } from "../../hooks/useGames";
 import { PlatFormIconList } from "../platform-icon-list";
 import CriticScore from "./CriticScore";
 import { getCroppedImageUrl } from "../../services/image-url";
-
 interface Props {
   game: Game;
 }
@@ -12,7 +11,7 @@ export function GameCard({
   game: { background_image, name, parent_platforms, metacritic },
 }: Props) {
   return (
-    <Card maxW="303px" mx={"auto"} borderRadius={10} overflow="hidden">
+    <Card>
       <Image
         objectFit={"cover"}
         src={getCroppedImageUrl(background_image)}
