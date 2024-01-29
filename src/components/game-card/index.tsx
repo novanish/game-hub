@@ -2,6 +2,7 @@ import { Card, CardBody, Image, Heading, HStack } from "@chakra-ui/react";
 import { type Game } from "../../hooks/useGames";
 import { PlatFormIconList } from "../platform-icon-list";
 import CriticScore from "./CriticScore";
+import { getCroppedImageUrl } from "../../services/image-url";
 
 interface Props {
   game: Game;
@@ -14,7 +15,7 @@ export default function GameCard({
     <Card maxW="303px" mx={"auto"} borderRadius={10} overflow="hidden">
       <Image
         objectFit={"cover"}
-        src={background_image}
+        src={getCroppedImageUrl(background_image)}
         alt={name}
         loading="lazy"
       />
@@ -22,7 +23,7 @@ export default function GameCard({
         <Heading fontSize="xl" mt="6">
           {name}
         </Heading>
-        <HStack justifyContent="space-between" >
+        <HStack justifyContent="space-between">
           <PlatFormIconList
             platforms={parent_platforms.map(({ platform }) => platform)}
           />
