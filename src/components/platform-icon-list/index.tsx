@@ -41,8 +41,8 @@ export function PlatFormIconList({ platforms }: Props) {
           key={platform.id}
           as={iconMap[platform["slug"]]}
           color="gray.500"
-          w={6}
-          h={6}
+          w={5}
+          h={5}
         />
       ))}
     </HStack>
