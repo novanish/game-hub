@@ -1,27 +1,17 @@
-import {
-  HStack,
-  Image,
-  Input,
-  Switch,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
+import { HStack, Image, Switch, Text, useColorMode } from "@chakra-ui/react";
 import logo from "../../assets/logo.webp";
+import { SearchInput } from "./SearchInput";
 
-export function Navbar() {
+interface Props {
+  onSearch: (search: string) => void;
+}
+export function Navbar({ onSearch }: Props) {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <nav>
       <HStack gap={7} p={4}>
         <Image src={logo} alt="logo" boxSize="60px" />
-        <Input
-          rounded="full"
-          px={5}
-          placeholder="Search games"
-          aria-label="search"
-          enterKeyHint="search"
-          spellCheck={false}
-        />
+        <SearchInput onSearch={onSearch} />
         <HStack>
           <Switch
             id="email-alerts"
