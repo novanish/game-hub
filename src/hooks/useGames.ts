@@ -19,14 +19,18 @@ export interface Platform {
 export interface Game {
   id: string;
   name: string;
-  background_image: string;
+  background_image: string | null;
   parent_platforms: Array<{ platform: Platform }>;
   metacritic: number;
 }
 
 export function useGames(gameQuery: GameQuery) {
   const requestConfig = {
-    params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id },
+    params: {
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id,
+      ordering: gameQuery.sortOrder,
+    },
   };
 
   const { data: games, ...rest } = useFetch<Game>("/games", requestConfig, [

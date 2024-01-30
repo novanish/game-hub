@@ -14,7 +14,7 @@ export function GameCard({
     <Card>
       <Image
         objectFit={"cover"}
-        src={getCroppedImageUrl(background_image)}
+        src={background_image ? getCroppedImageUrl(background_image) : ""}
         alt={name}
         loading="lazy"
       />
