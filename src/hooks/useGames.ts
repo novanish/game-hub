@@ -1,5 +1,5 @@
 import { useFetch } from "./useFetch";
-import { type Genre } from "./useGenres";
+import { type GameQuery } from "../App";
 
 export interface Platform {
   id: number;
@@ -24,17 +24,13 @@ export interface Game {
   metacritic: number;
 }
 
-export function useGames(
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) {
+export function useGames(gameQuery: GameQuery) {
   const requestConfig = {
-    params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id },
+    params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id },
   };
 
   const { data: games, ...rest } = useFetch<Game>("/games", requestConfig, [
-    selectedGenre?.id,
-    selectedPlatform?.id,
+    gameQuery,
   ]);
 
   return { games, ...rest };
