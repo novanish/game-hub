@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import { Navbar } from "./components/navbar";
 import { GameGrid } from "./components/game-grid";
 import { GenreList } from "./components/genre-list";
@@ -7,6 +7,7 @@ import { PlatformSelector } from "./components/platform-selector";
 import { type Genre } from "./hooks/useGenres";
 import { type Platform } from "./hooks/useGames";
 import { SortSelector } from "./components/sort-selector";
+import { GameHeading } from "./components/game-heading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -53,20 +54,30 @@ export default function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <HStack spacing={5} paddingLeft={2} marginBottom={5}>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) =>
-              setGameQuery((prevGameQuery) => ({ ...prevGameQuery, platform }))
-            }
-          />
-          <SortSelector
-            sortOrder={gameQuery.sortOrder}
-            onSelectSortOrder={(sortOrder) =>
-              setGameQuery((prevGameQuery) => ({ ...prevGameQuery, sortOrder }))
-            }
-          />
-        </HStack>
+        <Box padding={2}>
+          <GameHeading gameQuery={gameQuery} />
+
+          <HStack spacing={5} marginBottom={5}>
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery((prevGameQuery) => ({
+                  ...prevGameQuery,
+                  platform,
+                }))
+              }
+            />
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery((prevGameQuery) => ({
+                  ...prevGameQuery,
+                  sortOrder,
+                }))
+              }
+            />
+          </HStack>
+        </Box>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
