@@ -24,13 +24,17 @@ export interface Game {
   metacritic: number;
 }
 
-export function useGames(selectedGenre: Genre | null) {
+export function useGames(
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) {
   const requestConfig = {
-    params: { genres: selectedGenre?.id ?? null },
+    params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id },
   };
 
   const { data: games, ...rest } = useFetch<Game>("/games", requestConfig, [
     selectedGenre?.id,
+    selectedPlatform?.id,
   ]);
 
   return { games, ...rest };
