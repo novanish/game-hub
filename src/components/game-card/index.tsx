@@ -19,15 +19,15 @@ export function GameCard({
         loading="lazy"
       />
       <CardBody>
-        <Heading fontSize="xl" mt="6">
-          {name}
-        </Heading>
         <HStack justifyContent="space-between">
           <PlatFormIconList
             platforms={parent_platforms.map(({ platform }) => platform)}
           />
           <CriticScore score={metacritic} />
         </HStack>
+        <Heading fontSize="xl" mt="6">
+          {name}
+        </Heading>
       </CardBody>
     </Card>
   );
