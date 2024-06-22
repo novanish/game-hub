@@ -1,4 +1,4 @@
-import { useFetch } from "./useFetch";
+import genres from "../data/genres";
 
 export interface Genre {
   id: number;
@@ -7,7 +7,5 @@ export interface Genre {
 }
 
 export function useGenres() {
-  const { data: genres, ...rest } = useFetch<Genre>("/genres");
-
-  return { genres, ...rest };
+  return { genres, isLoading: false, error: null };
 }

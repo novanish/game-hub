@@ -1,8 +1,5 @@
-import { useFetch } from "./useFetch";
-import { Platform } from "./useGames";
+import platforms from "../data/platforms";
 
 export function usePlatforms() {
-  const { data: platforms, ...rest } = useFetch<Platform>("/platforms");
-
-  return { platforms, ...rest };
+  return { platforms, isLoading: false, error: null };
 }
