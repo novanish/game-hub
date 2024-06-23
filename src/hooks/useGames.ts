@@ -4,16 +4,7 @@ import { type GameQuery } from "../App";
 export interface Platform {
   id: number;
   name: string;
-  slug:
-    | "ios"
-    | "mac"
-    | "linux"
-    | "pc"
-    | "playstation"
-    | "xbox"
-    | "nintendo"
-    | "android"
-    | "web";
+  slug: string;
 }
 
 export interface Game {
