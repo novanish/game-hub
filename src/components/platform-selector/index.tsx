@@ -1,7 +1,7 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { BsChevronRight } from "react-icons/bs";
 import { usePlatforms } from "../../hooks/usePlatforms";
-import { type Platform } from "../../hooks/useGames";
+import { type Platform } from "../../hooks/usePlatforms";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
