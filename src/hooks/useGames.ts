@@ -1,5 +1,6 @@
-import { useFetch } from "./useFetch";
 import { type GameQuery } from "../App";
+import { useQuery } from "@tanstack/react-query";
+import { apiClient, type FetchResponse } from "../services/api-client";
 
 export interface Platform {
   id: number;
@@ -25,9 +26,18 @@ export function useGames(gameQuery: GameQuery) {
     },
   };
 
-  const { data: games, ...rest } = useFetch<Game>("/games", requestConfig, [
-    gameQuery,
-  ]);
+  return useQuery({
+    queryKey: ["games", requestConfig],
+    queryFn: () =>
+      apiClient
+        .get<FetchResponse<Game>>("/games", { ...requestConfig })
+        .then((res) => res.data),
+    staleTime: 10 * 60 * 1000, // 10m
+  });
 
-  return { games, ...rest };
+  // const { data: games, ...rest } = useFetch<Game>("/games", requestConfig, [
+  //   gameQuery,
+  // ]);
+
+  // return { games, ...rest };
 }
