@@ -13,8 +13,8 @@ const apiClient = new APIClient<Genre>("/genres");
 export function useGenres() {
   return useQuery({
     queryKey: ["genres"],
-    queryFn: apiClient.getAll(),
-    initialData: { results: genres, count: genres.length },
+    queryFn: apiClient.getAll,
+    initialData: { results: genres, count: genres.length, next: "" },
     staleTime: 24 * 60 * 60 * 1000, // 24 hour
   });
 }
