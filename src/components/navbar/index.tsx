@@ -1,6 +1,7 @@
 import { HStack, Image, Switch, Text, useColorMode } from "@chakra-ui/react";
 import logo from "../../assets/logo.webp";
 import { SearchInput } from "./SearchInput";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const { toggleColorMode, colorMode } = useColorMode();
@@ -8,7 +9,9 @@ export function Navbar() {
   return (
     <nav>
       <HStack gap={7} p={4}>
-        <Image src={logo} alt="logo" boxSize="60px" />
+        <Link to="/">
+          <Image src={logo} alt="logo" boxSize="60px" objectFit="cover" />
+        </Link>
         <SearchInput />
         <HStack>
           <Switch

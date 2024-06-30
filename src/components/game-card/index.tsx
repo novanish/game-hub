@@ -1,14 +1,15 @@
 import { Card, CardBody, Image, Heading, HStack } from "@chakra-ui/react";
-import { type Game } from "../../hooks/useGames";
+import { type Game } from "../../entities/Game";
 import { PlatFormIconList } from "../platform-icon-list";
 import CriticScore from "./CriticScore";
 import { getCroppedImageUrl } from "../../services/image-url";
+import { Link } from "react-router-dom";
 interface Props {
   game: Game;
 }
 
 export function GameCard({
-  game: { background_image, name, parent_platforms, metacritic },
+  game: { background_image, name, parent_platforms, metacritic, slug },
 }: Props) {
   return (
     <Card>
@@ -26,7 +27,7 @@ export function GameCard({
           <CriticScore score={metacritic} />
         </HStack>
         <Heading fontSize="xl" mt="6">
-          {name}
+          <Link to={`/games/${slug}`}>{name}</Link>
         </Heading>
       </CardBody>
     </Card>

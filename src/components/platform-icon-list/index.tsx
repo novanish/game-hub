@@ -1,4 +1,4 @@
-import { type Platform } from "../../hooks/usePlatforms";
+import { type Platform } from "../../entities/Platform";
 import {
   FaPlaystation,
   FaXbox,
